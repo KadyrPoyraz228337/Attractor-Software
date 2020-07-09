@@ -16,5 +16,5 @@ export const loginUserSuccess = userData => ({type: LOGIN_USER_SUCCESS, userData
 export const loginUserFailure = error => ({type: LOGIN_USER_FAILURE, error})
 export const loginUserInit = () => ({type: LOGIN_USER_INIT})
 
-export const logoutUserRequest = () => ({type: LOGOUT_REQUEST})
+export const logoutUserRequest = userData => ({type: LOGOUT_REQUEST, userData})
 export const logoutUserSuccess = () => ({type: LOGOUT_USER})

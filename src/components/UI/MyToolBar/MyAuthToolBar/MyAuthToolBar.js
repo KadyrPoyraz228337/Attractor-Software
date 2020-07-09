@@ -25,7 +25,7 @@ const MyAuthToolBar = () => {
     const user = useSelector(state => state.users.user);
 
     const logout = async () => {
-        await dispatch(logoutUserRequest());
+        await dispatch(logoutUserRequest(user));
     };
     return (
         <div>

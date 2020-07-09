@@ -6,6 +6,13 @@ import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import PrivateRoute from "./components/PrivatRoute/PrivatRoute";
+
+const test = () => {
+    return (
+        <h1>123</h1>
+    )
+}
 
 function App() {
   return (
@@ -15,6 +22,7 @@ function App() {
         <Switch>
           <Route path='/register' exact component={Register}/>
           <Route path='/login' exact component={Login}/>
+          <PrivateRoute component={test} role='admin' exact path='/' />
         </Switch>
       </div>
   );
