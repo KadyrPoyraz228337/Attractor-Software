@@ -1,20 +1,15 @@
 import {createBrowserHistory} from "history";
-import {applyMiddleware, combineReducers, compose, createStore} from "redux";
-import {routerMiddleware, connectRouter} from 'connected-react-router'
+import {applyMiddleware, compose, createStore} from "redux";
+import { routerMiddleware } from 'connected-react-router'
 import createSagaMiddleware from 'redux-saga'
 import {loadFromLocalStorage, localStorageMiddleware} from "./localStorage";
 import rootSaga from "./rootSaga";
-import usersReducer from "./reducers/usersReducer";
+import createRootReducer from './reducers'
 
 export const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware()
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-const createRootReducer = history => combineReducers({
-    router: connectRouter(history),
-    users: usersReducer,
-})
 
 const middleware = [
     routerMiddleware(history),
