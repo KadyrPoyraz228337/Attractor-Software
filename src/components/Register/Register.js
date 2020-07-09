@@ -36,9 +36,7 @@ const Register = () => {
 
     const userInit = {
         username: '',
-        name: '',
         password: '',
-        avatar: ''
     }
 
     const [user, setUser] = useState(userInit)
@@ -46,17 +44,9 @@ const Register = () => {
     const dispatch = useDispatch()
 
     const inputChangeHandler = e => setUser({...user, [e.target.name]: e.target.value})
-    const fileChangeHandler = e => setUser({...user, [e.target.name]: e.target.files[0]});
     const submitHandler = e => {
         e.preventDefault()
-
-        const data = new FormData();
-
-        Object.keys(user).forEach(item => {
-            data.append(item, user[item])
-        })
-
-        dispatch(registerUserRequest(data))
+        dispatch(registerUserRequest(user))
     }
 
     useEffect(() => {
@@ -75,7 +65,7 @@ const Register = () => {
                 </Typography>
                 <form className={classes.form} noValidate onSubmit={submitHandler}>
                     <Grid container spacing={2}>
-                        <Grid item xs={12} sm={6}>
+                        <Grid item xs={12}>
                             <FormElement
                                 error={error}
                                 helperText='User width this username already exist'
@@ -88,24 +78,7 @@ const Register = () => {
                                 autoFocus
                             />
                         </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <FormElement
-                                variant="outlined"
-                                onChange={inputChangeHandler}
-                                autoComplete='fname'
-                                required
-                                label="Display name"
-                                name="name"
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={2}>
-                            <FormElement
-                                type='image'
-                                name='avatar'
-                                onChange={fileChangeHandler}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={10}>
+                        <Grid item xs={12}>
                             <FormElement
                                 variant="outlined"
                                 onChange={inputChangeHandler}
