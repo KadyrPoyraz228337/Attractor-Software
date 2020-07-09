@@ -1,12 +1,12 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import ListItem from "@material-ui/core/ListItem";
 import Menu from "@material-ui/core/Menu";
 import Divider from "@material-ui/core/Divider";
 import MenuItem from "@material-ui/core/MenuItem";
 import {logoutUserRequest} from "../../../../store/actions/usersActions";
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 const MyAuthToolBar = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -37,9 +37,7 @@ const MyAuthToolBar = () => {
                 color="inherit"
                 id='user'
             >
-                <Avatar
-                    src={user.avatar ? 'http://localhost:8000/uploads/userAvatar/' + user.avatar : ""}
-                    alt={user.displayName}/>
+                <AccountCircleIcon/>
             </IconButton>
             <Menu
                 id="menu-appbar"
@@ -56,7 +54,7 @@ const MyAuthToolBar = () => {
                 open={open}
                 onClose={handleClose}
             >
-                <ListItem disabled>Hello {user.name}!</ListItem>
+                <ListItem disabled>Hello {user.username}!</ListItem>
                 <Divider/>
                 <MenuItem onClick={logout}>Logout</MenuItem>
             </Menu>
