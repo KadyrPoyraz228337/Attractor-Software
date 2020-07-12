@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Button from "@material-ui/core/Button";
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,7 +23,7 @@ const FormElement = (
     {
         name, variant, required, id, label, autoFocus,
         onChange, type, autoComplete, error, helperText,
-        margin
+        margin, multiline, options, optionLabel, value
     }
 ) => {
     const classes = useStyles();
@@ -44,6 +45,8 @@ const FormElement = (
             autoFocus={autoFocus}
             onChange={onChange}
             type={type}
+            multiline={multiline}
+            value={value}
         />
     )
 
@@ -67,6 +70,18 @@ const FormElement = (
 
                 </label>
             </div>
+        )
+    }
+
+    if (type === 'autocomplete') {
+        field = (
+            <Autocomplete
+                options={options}
+                getOptionLabel={(option) => option[optionLabel]}
+                onChange={onChange}
+                value={value}
+                renderInput={(params) => <TextField {...params} label={label} variant={variant} />}
+            />
         )
     }
 

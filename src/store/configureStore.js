@@ -21,9 +21,7 @@ const enhancers = composeEnhancers(applyMiddleware(...middleware));
 
 const persistedState = loadFromLocalStorage();
 
-export const store = createStore(createRootReducer(history), persistedState, enhancers);
-
-store.replaceReducer(createRootReducer(history))
+const store = createStore(createRootReducer(history), persistedState, enhancers);
 
 sagaMiddleware.run(rootSaga)
 

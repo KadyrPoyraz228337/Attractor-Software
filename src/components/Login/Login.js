@@ -94,7 +94,6 @@ const Login = () => {
                     />
                     {error && (
                         <Alert severity="error">
-                            {console.log(error)}
                             {error}
                         </Alert>
                     )}

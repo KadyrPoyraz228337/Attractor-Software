@@ -7,6 +7,7 @@ import Divider from "@material-ui/core/Divider";
 import MenuItem from "@material-ui/core/MenuItem";
 import {logoutUserRequest} from "../../../../store/actions/usersActions";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import {NavLink} from "react-router-dom";
 
 const MyAuthToolBar = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -56,6 +57,7 @@ const MyAuthToolBar = () => {
             >
                 <ListItem disabled>Hello {user.username}!</ListItem>
                 <Divider/>
+                <MenuItem component={NavLink} to={'/users/'+user._id}>Profile</MenuItem>
                 <MenuItem onClick={logout}>Logout</MenuItem>
             </Menu>
         </div>

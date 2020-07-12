@@ -6,9 +6,10 @@ import Typography from '@material-ui/core/Typography';
 import MyToolBar from "../UI/MyToolBar/MyToolBar";
 import {NavLink, useLocation} from "react-router-dom";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
+        zIndex: theme.zIndex.drawer + 1,
     },
     title: {
         padding: '0 10px',
@@ -31,14 +32,12 @@ const Navigation = () => {
         (<Typography variant="h6" className={classes.title}>{logoText}</Typography>)
 
     return (
-        <div className={classes.root}>
-            <AppBar position="static">
-                <Toolbar className={classes.toolBar}>
-                    {logo}
-                    <MyToolBar/>
-                </Toolbar>
-            </AppBar>
-        </div>
+        <AppBar position="static" className={classes.root}>
+            <Toolbar className={classes.toolBar}>
+                {logo}
+                <MyToolBar/>
+            </Toolbar>
+        </AppBar>
     );
 }
 
