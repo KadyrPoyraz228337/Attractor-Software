@@ -5,7 +5,7 @@ import store from "../../store/configureStore";
 const PrivateRoute = ({component: Component, path, exact, role, ...rest}) => {
     return <Route path={path} exact={exact} {...rest} render={(props) => {
         const user = store.getState().users.user;
-        return (!!user && user.role === role) || !role
+        return (!!user && user.role === role) || (!role && user)
             ? <Component {...props}/>
             : <Redirect to='/login' />
     }}
